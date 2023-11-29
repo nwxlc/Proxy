@@ -3,9 +3,11 @@ namespace Proxy;
 public class File : IFile
 {
     private MemoryStream _memoryStream;
-
-    public File()
+    private string _path;
+    
+    public File(string path)
     {
+        _path = path;
         _memoryStream = new MemoryStream();
     }
 
@@ -16,7 +18,7 @@ public class File : IFile
 
     public string GetPath()
     {
-        return "In Memory";
+        return _path;
     }
 
     public byte[] Show()
