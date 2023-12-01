@@ -9,8 +9,8 @@ public class File : IFile
     
     public File(string path)
     {
-        _path = path;
-        _streamReader = new StreamReader(_path);
+            _path = path;
+            _streamReader = new StreamReader(_path);
     }
 
     public double GetSize()
@@ -27,7 +27,7 @@ public class File : IFile
     public byte[] Show()
     {
         return System.IO.File.ReadAllBytes(_path);
-
+        //nwolc
     }
 
     public void Dispose()

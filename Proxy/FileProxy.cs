@@ -1,4 +1,3 @@
-
 namespace Proxy;
 
 public class FileProxy : IFile
@@ -48,6 +47,8 @@ public class FileProxy : IFile
     public void Dispose()
     {
         if (_file != null)
+        {
             _file.Dispose();
+        }
     }
 }
