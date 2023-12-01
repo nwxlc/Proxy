@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 
 namespace Proxy;
 
@@ -9,37 +8,30 @@ public class FileProxy : IFile
     public FileProxy(string path)
     {
         _path = path;
+        _file = new File(path);
     }
     
     public double GetSize()
     {
-        if (_file == null)
-        {
-            _file = new File(_path);
-        }
         if (_file != null)
         {
             return _file.GetSize();
         }
         else
         {
-            return 0;
+            return new FileInfo(_path).Length;
         }
     }
 
     public string GetPath()
     {
-        if (_file == null)
-        {
-            _file = new File(_path);
-        }
         if (_file != null)
         {
-            return _path;
+            return _file.GetPath();
         }
         else
         {
-            return null;
+            return _path;
         }
         
     }

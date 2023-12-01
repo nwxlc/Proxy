@@ -2,18 +2,21 @@ namespace Proxy;
 
 public class File : IFile
 {
-    private MemoryStream _memoryStream;
+    
     private string _path;
+    private StreamReader _streamReader;
+    private File _file;
     
     public File(string path)
     {
         _path = path;
-        _memoryStream = new MemoryStream();
+        _streamReader = new StreamReader(_path);
     }
 
     public double GetSize()
     {
-        return _memoryStream.Length;
+        var file = new FileInfo(_path);
+        return file.Length;
     }
 
     public string GetPath()
@@ -23,11 +26,12 @@ public class File : IFile
 
     public byte[] Show()
     {
-        return _memoryStream.ToArray();
+        return System.IO.File.ReadAllBytes(_path);
+
     }
 
     public void Dispose()
     {
-        _memoryStream.Dispose();
+        _streamReader.Dispose();
     }
 }
